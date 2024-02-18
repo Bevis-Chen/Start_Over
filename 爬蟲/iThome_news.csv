@@ -1,31 +1,31 @@
 ﻿,Title,URL,Date,Class
-0,HPE更新2U高密度儲存伺服器，升級CPU運算平臺,https://www.ithome.com.tw/review/161310,2024-02-16 ,big-data
-1,美國商標暨專利辦公室拒絕OpenAI申請GPT及CHATGPT的商標,https://www.ithome.com.tw/news/161318,2024-02-16 ,big-data
-2,Google發表Gemini 1.5，可支援長達100萬個Token的脈絡,https://www.ithome.com.tw/news/161315,2024-02-16 ,big-data
-3,Amazon訓練歷來最大的語音合成AI模型BASE TTS,https://www.ithome.com.tw/news/161313,2024-02-16 ,big-data
-4,Stability AI公開下一代圖像生成模型Stable Cascade，比SDXL更快更好,https://www.ithome.com.tw/news/161297,2024-02-15 ,big-data
-5,提供多視窗設置彈性與AI輔助，Webex挺進蘋果空間運算平臺,https://www.ithome.com.tw/review/161279,2024-02-15 ,big-data
-6,祖克柏宣稱Quest 3優於蘋果的Vision Pro,https://www.ithome.com.tw/news/161283,2024-02-15 ,big-data
-7,微軟與OpenAI證實大型語言模型已被各國駭客用來協助網路攻擊行動,https://www.ithome.com.tw/news/161281,2024-02-15 ,big-data
-8,Nvidia推出Chat with RTX應用程式，供用戶在本地端自訂AI聊天機器人,https://www.ithome.com.tw/news/161274,2024-02-15 ,big-data
-9,.NET 9預覽版來了！重點仍是雲端原生與AI支援,https://www.ithome.com.tw/news/161273,2024-02-15 ,big-data
-10,可使用Gemini的Google One AI進階版正式推出，臺灣也已上線,https://www.ithome.com.tw/news/161264,2024-02-12 ,cloud
-11,YouTube開源腳本範例，協助創作者自動化影片編輯,https://www.ithome.com.tw/news/161263,2024-02-12 ,cloud
-12,Google推localllm命令列工具，支援本機CPU執行大型語言模型,https://www.ithome.com.tw/news/161235,2024-02-08 ,cloud
-13,K8s成本管理工具Kubecost 2.0大更新，採用全新API後端效能提升達百倍,https://www.ithome.com.tw/news/161201,2024-02-06 ,cloud
-14,【3大公有雲的檔案儲存服務2】Azure的SaaS檔案儲存服務,https://www.ithome.com.tw/tech/161193,2024-02-05 ,cloud
-15,【3大公有雲的檔案儲存服務1】AWS的SaaS檔案儲存服務,https://www.ithome.com.tw/tech/161192,2024-02-05 ,cloud
-16,走向多元化的公有雲檔案服務,https://www.ithome.com.tw/article/161195,2024-02-05 ,cloud
-17,雲原生當道，下雲也是一種選項,https://www.ithome.com.tw/voice/161186,2024-02-05 ,cloud
-18,【靠Docker自動部署，部署新版Hey只要20秒】不只下雲還去K8s，37signals自行打造全新Web部署工具,https://www.ithome.com.tw/news/161184,2024-02-05 ,cloud
-19,微軟付費版Copilot for Sales and Service全面上線,https://www.ithome.com.tw/news/161178,2024-02-05 ,cloud
-20,國軍高總擁抱開源開發技術，累積小勝利要新建數據中臺,https://www.ithome.com.tw/people/160804,2024-01-12 ,healthit
-21,Withings推出首支四合一無線聽診器BeamO，能測心電圖、體溫、血氧、心音,https://www.ithome.com.tw/news/160736,2024-01-09 ,healthit
-22,MedTech醫療科技雙周報第30期：全美28家醫療機構響應白宮AI行政命令,https://www.ithome.com.tw/news/160439,2023-12-19 ,healthit
-23,中醫大附醫率先採用醫療專科級MedLM來打造AI輔助醫師，第一步從癌症治療規畫AI助手開始,https://www.ithome.com.tw/news/160364,2023-12-15 ,healthit
-24,10秒完成大數據搜尋！臺北榮總打造全基因定序分析系統，還要導入AI來預測用藥風險,https://www.ithome.com.tw/news/160170,2023-12-05 ,healthit
-25,第7屆臺灣醫療科技展今日登場！全臺80多家醫院秀醫療AI和數位應用亮點,https://www.ithome.com.tw/news/160087,2023-11-30 ,healthit
-26,MedTech醫療科技雙周報第29期：FDA近1年核准171項醫療AI商品，但尚未核准任何生成式AI醫材,https://www.ithome.com.tw/news/159574,2023-10-31 ,healthit
-27,Google演算法可用降噪耳機量測心率,https://www.ithome.com.tw/news/159546,2023-10-30 ,healthit
-28,新光醫院HIS一次全面大換新，大力發展對外應用瞄準微服務,https://www.ithome.com.tw/people/159392,2023-10-20 ,healthit
-29,健保署提健保數位升級8大策略,https://www.ithome.com.tw/news/159227,2023-10-11 ,healthit
+0,HPE更新2U高密度儲存伺服器，升級CPU運算平臺,https://www.ithome.com.tw/review/161310,2024-02-16 ,AI
+1,美國商標暨專利辦公室拒絕OpenAI申請GPT及CHATGPT的商標,https://www.ithome.com.tw/news/161318,2024-02-16 ,AI
+2,Google發表Gemini 1.5，可支援長達100萬個Token的脈絡,https://www.ithome.com.tw/news/161315,2024-02-16 ,AI
+3,Amazon訓練歷來最大的語音合成AI模型BASE TTS,https://www.ithome.com.tw/news/161313,2024-02-16 ,AI
+4,Stability AI公開下一代圖像生成模型Stable Cascade，比SDXL更快更好,https://www.ithome.com.tw/news/161297,2024-02-15 ,AI
+5,提供多視窗設置彈性與AI輔助，Webex挺進蘋果空間運算平臺,https://www.ithome.com.tw/review/161279,2024-02-15 ,AI
+6,祖克柏宣稱Quest 3優於蘋果的Vision Pro,https://www.ithome.com.tw/news/161283,2024-02-15 ,AI
+7,微軟與OpenAI證實大型語言模型已被各國駭客用來協助網路攻擊行動,https://www.ithome.com.tw/news/161281,2024-02-15 ,AI
+8,Nvidia推出Chat with RTX應用程式，供用戶在本地端自訂AI聊天機器人,https://www.ithome.com.tw/news/161274,2024-02-15 ,AI
+9,.NET 9預覽版來了！重點仍是雲端原生與AI支援,https://www.ithome.com.tw/news/161273,2024-02-15 ,AI
+10,可使用Gemini的Google One AI進階版正式推出，臺灣也已上線,https://www.ithome.com.tw/news/161264,2024-02-12 ,雲端-新聞
+11,YouTube開源腳本範例，協助創作者自動化影片編輯,https://www.ithome.com.tw/news/161263,2024-02-12 ,雲端-新聞
+12,Google推localllm命令列工具，支援本機CPU執行大型語言模型,https://www.ithome.com.tw/news/161235,2024-02-08 ,雲端-新聞
+13,K8s成本管理工具Kubecost 2.0大更新，採用全新API後端效能提升達百倍,https://www.ithome.com.tw/news/161201,2024-02-06 ,雲端-新聞
+14,【3大公有雲的檔案儲存服務2】Azure的SaaS檔案儲存服務,https://www.ithome.com.tw/tech/161193,2024-02-05 ,雲端-新聞
+15,【3大公有雲的檔案儲存服務1】AWS的SaaS檔案儲存服務,https://www.ithome.com.tw/tech/161192,2024-02-05 ,雲端-新聞
+16,走向多元化的公有雲檔案服務,https://www.ithome.com.tw/article/161195,2024-02-05 ,雲端-新聞
+17,雲原生當道，下雲也是一種選項,https://www.ithome.com.tw/voice/161186,2024-02-05 ,雲端-新聞
+18,【靠Docker自動部署，部署新版Hey只要20秒】不只下雲還去K8s，37signals自行打造全新Web部署工具,https://www.ithome.com.tw/news/161184,2024-02-05 ,雲端-新聞
+19,微軟付費版Copilot for Sales and Service全面上線,https://www.ithome.com.tw/news/161178,2024-02-05 ,雲端-新聞
+20,國軍高總擁抱開源開發技術，累積小勝利要新建數據中臺,https://www.ithome.com.tw/people/160804,2024-01-12 ,醫療
+21,Withings推出首支四合一無線聽診器BeamO，能測心電圖、體溫、血氧、心音,https://www.ithome.com.tw/news/160736,2024-01-09 ,醫療
+22,MedTech醫療科技雙周報第30期：全美28家醫療機構響應白宮AI行政命令,https://www.ithome.com.tw/news/160439,2023-12-19 ,醫療
+23,中醫大附醫率先採用醫療專科級MedLM來打造AI輔助醫師，第一步從癌症治療規畫AI助手開始,https://www.ithome.com.tw/news/160364,2023-12-15 ,醫療
+24,10秒完成大數據搜尋！臺北榮總打造全基因定序分析系統，還要導入AI來預測用藥風險,https://www.ithome.com.tw/news/160170,2023-12-05 ,醫療
+25,第7屆臺灣醫療科技展今日登場！全臺80多家醫院秀醫療AI和數位應用亮點,https://www.ithome.com.tw/news/160087,2023-11-30 ,醫療
+26,MedTech醫療科技雙周報第29期：FDA近1年核准171項醫療AI商品，但尚未核准任何生成式AI醫材,https://www.ithome.com.tw/news/159574,2023-10-31 ,醫療
+27,Google演算法可用降噪耳機量測心率,https://www.ithome.com.tw/news/159546,2023-10-30 ,醫療
+28,新光醫院HIS一次全面大換新，大力發展對外應用瞄準微服務,https://www.ithome.com.tw/people/159392,2023-10-20 ,醫療
+29,健保署提健保數位升級8大策略,https://www.ithome.com.tw/news/159227,2023-10-11 ,醫療
