@@ -28,7 +28,7 @@ def get_chrome(url, chromeDriver= r'C:\webdriver\chromedriver.exe', hide=False):
         print(e, "是出了什麼問題...?")    
     return "Nothing"
 
-def find_element(chrome, xpath, class_name):
+def find_element(chrome, xpath = None, class_name = None):
     try:
         if class_name != None:
             return chrome.find_element(By.CLASS_NAME, class_name)
