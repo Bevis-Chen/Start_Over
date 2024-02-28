@@ -119,7 +119,7 @@ try:
         chrome = get_chrome(url, hide = True)
         #網頁最大化
         chrome.maximize_window()
-        time.sleep(1)
+        time.sleep(1)       
         if "mL3xi" in str(chrome.page_source):           
             # 輸入框
             xpath1 = "/html/body/div[1]/div[3]/div[8]/div[3]/div[1]/div[1]/div/div[2]/form/input"
