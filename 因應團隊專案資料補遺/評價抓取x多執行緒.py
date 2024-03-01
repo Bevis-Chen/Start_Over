@@ -14,12 +14,13 @@ from selenium.webdriver.common.by import By
 
 
 url = "https://www.google.com/maps/"
-datas = pd.read_csv(r"因應團隊專案資料補遺\Taipei_to_hots_copy1.csv", encoding = "utf-8-sig")
+datas = pd.read_csv(r"Taipei_to_hots_copy1.csv", encoding = "utf-8-sig")
 # print(datas)  datas["shopName"][1]
 
 def get_onehots_comments(name):
     global q
     chrome= None
+    count = 1
     try:
         while True:
             chrome = get_chrome(url, hide = True)
@@ -125,8 +126,13 @@ def get_onehots_comments(name):
                 temp.extend([people, comment])
             data.extend(temp)
         chrome.quit()
-        q.put(data)
-        return data
+        if data != []:
+            q.put(data)            
+            return data
+        # else:
+        #     count += 1
+        #     if count <= 3:
+        #         get_onehots_comments(name)
     except Exception as e:
         print(e, "什麼?")
     finally:
@@ -135,22 +141,23 @@ def get_onehots_comments(name):
 
 threads = []
 all_comments = []
-q= Queue()
+q = Queue()
 
 for name in datas["shopName"][:5]:
     t = threading.Thread(target = get_onehots_comments, args = (name, ))
     # data = get_onehots_comments(name)
     t.start()
     threads.append(t)
+    time.sleep(.5)
     # all_comments.append([name, data])
 for thread in threads:
     thread.join()
 for i in range(q.qsize()):
-    all_comments += [q.get()]
-# df = pd.DataFrame(all_comments)
-print(all_comments)
+    all_comments += [datas["shopName"][i], q.get()]
 
-
+# print(all_comments)
+df = pd.DataFrame(all_comments)
+print(df)
 
 
 
