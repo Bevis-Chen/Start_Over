@@ -14,8 +14,11 @@ from selenium.webdriver.common.by import By
 
 
 url = "https://www.google.com/maps/"
-datas = pd.read_csv(r"Taipei_to_hots_copy1.csv", encoding = "utf-8-sig")
+files_path = r"D:\More Document\Python\宏碁班\課程講義\練習題\Start_Over\因應團隊專案資料補遺\Taipei_to_hots_copy1.csv"
+
+datas = pd.read_csv(files_path, encoding = "utf-8-sig")
 # print(datas)  datas["shopName"][1]
+
 
 def get_onehots_comments(name):
     global q
@@ -48,17 +51,17 @@ def get_onehots_comments(name):
                         url_new = number.find("a", class_ = "hfpxzc").get("href")
                 chrome.quit()
                 chrome = get_chrome(url_new, hide = False)
-                time.sleep(0.5)
+                time.sleep(3)
                 #網頁最大化
                 chrome.maximize_window()
                 chrome.refresh()    
         elif "RZ66Rb" in str(chrome.page_source):
-            time.sleep(0.5)   
+            time.sleep(3)   
         
         # 解決評論位置(暴力)
         soup = BeautifulSoup(chrome.page_source, "html.parser")
         comment_locate = len(soup.find_all("div", class_ = "Gpq6kf fontTitleSmall"))
-        time.sleep(0.5)
+        time.sleep(1)
         if comment_locate == 3:
             try:
                 xpath = "/html/body/div[1]/div[3]/div[8]/div[9]/div/div/div[1]/div[2]/div/div[1]/div/div/div[3]/div/div/button[2]"
@@ -126,13 +129,13 @@ def get_onehots_comments(name):
                 temp.extend([people, comment])
             data.extend(temp)
         chrome.quit()
-        if data != []:
+        if data != None:
             q.put(data)            
             return data
         # else:
-        #     count += 1
-        #     if count <= 3:
-        #         get_onehots_comments(name)
+            # count += 1
+            # if count <= 3:
+            #     get_onehots_comments(name)
     except Exception as e:
         print(e, "什麼?")
     finally:
@@ -143,18 +146,18 @@ threads = []
 all_comments = []
 q = Queue()
 
-for name in datas["shopName"][:5]:
-    t = threading.Thread(target = get_onehots_comments, args = (name, ))
-    # data = get_onehots_comments(name)
-    t.start()
-    threads.append(t)
-    time.sleep(.5)
-    # all_comments.append([name, data])
-for thread in threads:
-    thread.join()
-for i in range(q.qsize()):
-    all_comments += [datas["shopName"][i], q.get()]
-
+# for name in datas["shopName"][:1]:
+#     t = threading.Thread(target = get_onehots_comments, args = (name, ))
+#     # data = get_onehots_comments(name)
+#     t.start()
+#     threads.append(t)
+#     time.sleep(.5)
+#     # all_comments.append([name, data])
+# for thread in threads:
+#     thread.join()
+# for i in range(q.qsize()):
+#     all_comments += [datas["shopName"][i], q.get()]
+all_comments += get_onehots_comments(datas["shopName"][0])
 # print(all_comments)
 df = pd.DataFrame(all_comments)
 print(df)
