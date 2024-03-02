@@ -14,9 +14,9 @@ datas = pd.read_csv(files_path, encoding = "utf-8-sig")
 def open_googlemap(name):
     try:
         while True:
-            chrome = get_chrome(url, hide = True)
+            chrome = get_chrome(url, hide = False)
             if "yZqPAf" in str(chrome.page_source):
-                chrome = get_chrome(url, hide = True)
+                chrome = get_chrome(url, hide = False)
             else:
                 break
         chrome.refresh()
@@ -28,7 +28,7 @@ def open_googlemap(name):
         element.clear()
         element.click()
         element.send_keys(name + "\n") 
-        return chrome
+        # return chrome
     except Exception as e:
         print(e)
         print("GoogleMap怎麼了!??")
@@ -131,7 +131,7 @@ all_comments = []
 
 
 
-
+chrome = open_googlemap(datas["shopName"][0])
 
 
 # for i in datas["shopName"][:2]:
