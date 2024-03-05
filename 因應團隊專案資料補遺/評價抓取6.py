@@ -172,4 +172,4 @@ except Exception as e:
 now_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 df1 = pd.DataFrame(all_comments)
-df1.to_csv(f"tapei_comments_{now_time}.csv", encoding = "UTF-8-sig")
+df1.to_csv("tapei_comments_{}.csv".format(now_time), encoding = "UTF-8-sig")
