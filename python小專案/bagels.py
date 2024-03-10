@@ -38,7 +38,7 @@ clues would be Fermi Pico.'''.format(NUM_DIGITS))
 
             clues = getClues(guess, secretNum)
             print(clues)
-            numGuess += 1
+            numGuesses += 1
 
             if guess == secretNum:
                 break
