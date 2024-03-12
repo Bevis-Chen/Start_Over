@@ -8,9 +8,9 @@ Tags: short, game, puzzle"""
 import random
 
 NUM_DIGITS = 3
-# NUM_DIGITS = 5
+# NUM_DIGITS = 11
 MAX_GUESSES = 10
-MAX_GUESSES = 11
+# MAX_GUESSES = 11
 
 def main():
     print('''Bagels, a deductive logic game.
@@ -28,6 +28,7 @@ clues would be Fermi Pico.'''.format(NUM_DIGITS))
     
     while True:
         secretNum = getSecretNum()
+        # secretNum = "123"
         print("I have thought up a number.")
         print(' You have {} guesses to get it.'.format(MAX_GUESSES))
 
@@ -61,6 +62,7 @@ def getSecretNum():
     for i in range(NUM_DIGITS):
         secretNum += str(numbers[i])
     return secretNum
+
 def getClues(guess, secretNum):
     if guess == secretNum:
         return "You got it!"
