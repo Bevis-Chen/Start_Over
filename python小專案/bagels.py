@@ -8,7 +8,9 @@ Tags: short, game, puzzle"""
 import random
 
 NUM_DIGITS = 3
+# NUM_DIGITS = 5
 MAX_GUESSES = 10
+MAX_GUESSES = 11
 
 def main():
     print('''Bagels, a deductive logic game.
