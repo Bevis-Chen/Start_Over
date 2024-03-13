@@ -18,10 +18,11 @@ my_data = {
 resp = requests.post(url, headers = Headers, data = my_data)
 
 if resp.status_code == 200 :
-    # soup = BeautifulSoup(resp.text, "html.parser")
+    soup = BeautifulSoup(resp.text, "html.parser")
     # __VIEWSTATE = soup.find()
-    text = resp.text
-    print(text)
+    # text = resp.text
+    # print(text)
+    num = soup.find("span" )
 
 
 
