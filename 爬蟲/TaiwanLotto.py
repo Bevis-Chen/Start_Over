@@ -28,20 +28,36 @@ def get_SuperLotto_numbers(year, month):
         tables= soup.find_all("td", style = "width: 1063px")
         all = []
         for table in tables:
-            order = table.find("span", id = re.compile("SuperLotto638Control_history1_dlQuery_DrawTerm_\d"))
+            number_list = []
+            order = table.find("span", id = re.compile("SuperLotto638Control_history1_dlQuery_DrawTerm_\d")).text
             number = table.find_all("span", id = re.compile("SuperLotto638Control_history1_dlQuery_SNo\d_\d"))
-            print("期別號碼: ", order.text)
-            number_list.append(order.text)
+            print("期別號碼: ", order)
+            number_list.append(order)
             print("獎號(含特別號): ", end = " ")
             for num in number:
                 print(num.text, end = " ")
                 number_list.append(num.text)
-            print(number_list)
-            number_list = []
+            all.append(number_list)                     
             print()
-
-# year = "97"
-# month = "1"
+    # print(all)
+    return all
 
 if __name__ == "__main__":
-    get_SuperLotto_numbers(year= "97", month = "1")
+    
+
+    # all = []
+    # for i in range((113-97)):
+    #     if i == (113 - 97):
+    #         for k in range(2):
+    #             year = str(i + 97)
+    #             month = str(k + 1)
+    #             one_month = get_SuperLotto_numbers(year, month)
+    #             all.extend(one_month)
+    #     else:
+    #         for k in range(12):
+    #             year = str(i + 97)
+    #             month = str(k + 1)
+    #             one_month = get_SuperLotto_numbers(year, month)
+    #             all.extend(one_month)
+    # df = pd.DataFrame(all, columns= ["期別號碼", "獎號(含特別號)"])
+    # print(df.to_csv("威力彩所有號碼.csv", encoding = "UTF-8-sig"))
