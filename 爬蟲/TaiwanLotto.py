@@ -2,7 +2,6 @@ import requests, re
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# url = "https://www.taiwanlottery.com.tw/lotto/superlotto638/history.aspx"
 url = "https://www.taiwanlottery.com.tw/3th_Lotto/SuperLotto638/history.aspx"
 Headers = {"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"}
 my_data = {
@@ -21,24 +20,14 @@ resp = requests.post(url, headers = Headers, data = my_data)
 
 if resp.status_code == 200 :
     soup = BeautifulSoup(resp.text, "html.parser")
-    # __VIEWSTATE = soup.find()
-    # text = resp.text
-    # print(text)
-    # for i, num in enumerate(soup.find("tr", bgcolor = "#ffefa4").find("tr", class_ ="number").find_all("span")):
-    #     print(num.text)
-    num = soup.find_all("span", id = re.compile("SuperLotto638Control_history1_dlQuery_SNo\d_\d"))
-    order  =  soup.find_all("span", id = re.compile("SuperLotto638Control_history1_dlQuery_DrawTerm_\d"))
     count = 0
-
-
-
-    for o in order:
-        print("期別號碼: ", o.text, ", ", end = " ")
+    tables= soup.find_all("td", style = "width: 1063px")
+    for table in tables:
+        order = table.find("span", id = re.compile("SuperLotto638Control_history1_dlQuery_DrawTerm_\d"))
+        number = table.find_all("span", id = re.compile("SuperLotto638Control_history1_dlQuery_SNo\d_\d"))
+        print("期別號碼: ", order.text)
+        print("獎號(含特別號): ", end = " ")
+        for num in number:
+            print(num.text, end = " ")
         print()
-        for n in num:
-            print(n.text, end = " ")
-            count += 1
 
-            if count % 7 == 0:
-                count = 0
-                print()
