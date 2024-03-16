@@ -1,6 +1,8 @@
-import requests, re
-from bs4 import BeautifulSoup
+import requests, re, time
 import pandas as pd
+from datetime import datetime
+from bs4 import BeautifulSoup
+from alive_progress import alive_barimport 
 
 url = "https://www.taiwanlottery.com.tw/3th_Lotto/SuperLotto638/history.aspx"
 Headers = {"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"}
@@ -43,21 +45,21 @@ def get_SuperLotto_numbers(year, month):
     return all
 
 if __name__ == "__main__":
-    
-
-    # all = []
-    # for i in range((113-97)):
-    #     if i == (113 - 97):
-    #         for k in range(2):
-    #             year = str(i + 97)
-    #             month = str(k + 1)
-    #             one_month = get_SuperLotto_numbers(year, month)
-    #             all.extend(one_month)
-    #     else:
-    #         for k in range(12):
-    #             year = str(i + 97)
-    #             month = str(k + 1)
-    #             one_month = get_SuperLotto_numbers(year, month)
-    #             all.extend(one_month)
-    # df = pd.DataFrame(all, columns= ["期別號碼", "獎號(含特別號)"])
+    # one_month = get_SuperLotto_numbers(101, 10)
+    # print(one_month)
+    all = []
+    for i in range((113-97)):
+        if i == (113 - 97):
+            for k in range(2):
+                year = str(i + 97)
+                month = str(k + 1)
+                one_month = get_SuperLotto_numbers(year, month)
+                all.extend(one_month)
+        else:
+            for k in range(12):
+                year = str(i + 97)
+                month = str(k + 1)
+                one_month = get_SuperLotto_numbers(year, month)
+                all.extend(one_month)
+    df = pd.DataFrame(all, columns= ["期別號碼", "獎號(含特別號)"])
     # print(df.to_csv("威力彩所有號碼.csv", encoding = "UTF-8-sig"))
