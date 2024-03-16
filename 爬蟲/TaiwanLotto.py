@@ -1,6 +1,8 @@
-import requests
+import requests, re
 from bs4 import BeautifulSoup
+import pandas as pd
 
+# url = "https://www.taiwanlottery.com.tw/lotto/superlotto638/history.aspx"
 url = "https://www.taiwanlottery.com.tw/3th_Lotto/SuperLotto638/history.aspx"
 Headers = {"user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"}
 my_data = {
@@ -10,8 +12,8 @@ my_data = {
     "__EVENTVALIDATION": "E8uIlYokm7bLP9oN/osdHl21a9YZV/6c9zx3yFDxNggPx9re3JMdgBQiqiTeUE8LgePJlEs6iboFVPg/eQYOE9cq+04FbXZzg1uBXzI5UQsKMIGj+ZQUPsW6k/0NHaQCzx23kMpsaxZ23fyLYoZgoLeIrpeZ56JjS0BE5gZEvUxK7w2rGKF9gk/+IpWOiYJlv5feIWf5drwBrb+eFPW4MkKVGMtq4ZLd6pveQQr5SdiVYv6XDU+/ioVLQj4qKQKV6QhLzhkbp6x0AhkQfLKTBRaXJOvCQP1P3ZQYI9BWaNgpvjeyCDTsY8lTukYAWraZGbSkFOYoUVrvjfcV2IcjzGZg+HZvchPL/YcbBuFc3eOkeJQNJ9LcVw5om9FA96IOW8DIDIbm4VWEbaZI0oKzPoxZIglglhAbVA1NcJh7OpgFFWEqZmLd3WHc8XlsZsPUqnUmg7o3yLNaFN/+O2+3CPMr/XDsSCePtN+8n+7MVmIIgskLuBmKM1QPQ1pdsysnUUY+hrCF5qOFWiPSLFI3n7RcTNf1x0vhxyO/vCRQUmFg7Z03cFBtXzvTllZRhczMqSfZdRtSOBFAQVPqOwWnJcfQNNHIcNtj1HkIlPZR/YhWwvT1WV2uefnHKrrJLhOlb5lIgKX1HrWZDLv7mg9n64jYwiE7ySsHcpmDErfFmc3ZEglbkyRxhE04pHrG4YjamOUFcxWuAYjGgFez24FDFOkSbZpzmo5MIW29Ygt3ptd0fCpU/FoHGi6+YNezNbEfSUWDcncO8+Zk69B2UEcS9zoS/2QpBeMOb/n+tvZsEEx173Z5A3tOF8LPj8qUNvt4Dbw4ADpL7S4mHM21rlEbFpC93fGPTtR6WWhXRexjNb3fApDE",  
     "SuperLotto638Control_history1$DropDownList1": "1",
     "SuperLotto638Control_history1$chk": "radYM",
-    "SuperLotto638Control_history1$dropYear": "102",
-    "SuperLotto638Control_history1$dropMonth": "6",
+    "SuperLotto638Control_history1$dropYear": "106",
+    "SuperLotto638Control_history1$dropMonth": "8",
     "SuperLotto638Control_history1$btnSubmit": "查詢",
 }
 
@@ -24,6 +26,8 @@ if resp.status_code == 200 :
     # print(text)
     # for i, num in enumerate(soup.find("tr", bgcolor = "#ffefa4").find("tr", class_ ="number").find_all("span")):
     #     print(num.text)
-    print(soup.find_all("tbody"))
+    num = soup.find_all("span", id = re.compile("SuperLotto638Control_history1_dlQuery_SNo\d_\d"))
+    for n in num:
+        print(n.text)
 
 
