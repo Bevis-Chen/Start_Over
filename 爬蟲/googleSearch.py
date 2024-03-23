@@ -6,12 +6,13 @@ from bs4 import BeautifulSoup
 url = r"https://www.google.com/search"
 header = {"user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"}
 
-resp = requests.get(url, headers = header, params = {"q":"android"})
+resp = requests.get(url, headers = header, params = {"q" : "android"})
 
 if resp.status_code == 200:
     # print(resp.text)
     soup = BeautifulSoup(resp.text, "html.parser")
-    title = soup.select("h3.LC20lb MBeuO DKV0Md")
-    print(title)
-    # print(soup.find(class_ = "LC20lb"))
-
+    datas = soup.select("div.yuRUbf")
+    for i in datas:
+        print(i.find("h3").text)
+        print(i.find("a").get("href"))
+        print("*" * 60)
