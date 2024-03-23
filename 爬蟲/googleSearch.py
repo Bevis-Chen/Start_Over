@@ -1,7 +1,13 @@
 import pandas as pd
 import requests
+from bs4 import BeautifulSoup
 
-url = "https://www.google.com/search?q=andorid&sca_esv=100a8d72724cfbcd&source=hp&ei=QPP-ZYHpMuzX1e8PwNajuAc&iflsig=ANes7DEAAAAAZf8BUL_zyepTIuyNuxH3aP18jvMKMIdd&ved=0ahUKEwiBiYDa14qFAxXsa_UHHUDrCHcQ4dUDCA8&uact=5&oq=andorid&gs_lp=Egdnd3Mtd2l6IgdhbmRvcmlkMgoQABiABBgKGLEDMg0QABiABBgKGLEDGIMBMgoQABiABBgKGLEDMgoQABiABBgKGLEDMg0QABiABBgKGLEDGIMBMgoQABiABBgKGLEDMg0QABiABBgKGLEDGIMBMgoQABiABBgKGLEDMg0QABiABBgKGLEDGIMBMg0QABiABBgKGLEDGIMBSNoYUJUIWIoXcAF4AJABAJgBPqAB2AKqAQE3uAEDyAEA-AEBmAIHoALqAqgCAMICDhAuGIAEGLEDGMcBGNEDwgILEAAYgAQYsQMYgwHCAhEQLhiABBixAxiDARjHARjRA8ICCBAAGIAEGLEDwgIFEAAYgATCAggQLhiABBixA8ICCxAuGIAEGLEDGIMBwgIOEAAYgAQYigUYsQMYgwHCAgUQLhiABMICCBAuGLEDGIAEwgIHEAAYgAQYCsICERAuGK8BGMcBGIAEGJgFGJkFmAMCkgcBN6AHwDo&sclient=gws-wiz"
+url = r"https://www.google.com/search?q=android&sca_esv=100a8d72724cfbcd&ei=mvT-Zf6jC77d1e8P68Gq2A4&ved=0ahUKEwj-2Nb-2IqFAxW-bvUHHeugCusQ4dUDCBA&oq=andorid&gs_lp=Egxnd3Mtd2l6LXNlcnAiB2FuZG9yaWQyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEcyBBAAGEdIwglQAFgAcAB4ApABAJgBAKABAKoBALgBDMgBAJgCAaACBZgDAOIDBRIBMSBAiAYBkAYKkgcBMaAHAA&sclient=gws-wiz-serp"
 
+resp = requests.get(url)
 
+if resp.status_code == 200:
+    # print(resp.text)
+    soup = BeautifulSoup(resp.text, "html.parser")
+    print(soup.find(class_ = "LC20lb"))
 
