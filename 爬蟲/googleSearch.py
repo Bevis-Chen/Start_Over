@@ -13,6 +13,6 @@ if resp.status_code == 200:
     soup = BeautifulSoup(resp.text, "html.parser")
     datas = soup.select("div.yuRUbf")
     for i in datas:
-        print(i.find("h3").text)
-        print(i.find("a").get("href"))
+        print(i.select_one("h3").text)
+        print(i.select_one("a").get("href"))
         print("*" * 60)
