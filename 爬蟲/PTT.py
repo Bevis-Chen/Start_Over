@@ -24,10 +24,10 @@ try:
             datas = soup.select("div.r-ent")
             # print(datas)
             for data in datas:
-                
-                if "Re: " not in data.select_one("a").text:
-                    print(data.select_one("a").text)
-                    print("https://www.ptt.cc" + data.select_one("a").get("href"))
+                if data.select_one("title").text != None:
+                    if "Re: " not in data.select_one("title a").text:
+                        print(data.select_one("title a").text)
+                        print("https://www.ptt.cc" + data.select_one("a").get("href"))
             # datas = soup.select("div.yuRUbf")
             # for i in datas:
             #     print(i.select_one("h3").text)
