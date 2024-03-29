@@ -1,5 +1,5 @@
 import pandas as pd
-import requests
+import requests, time
 from bs4 import BeautifulSoup
 
 url = r"https://www.ptt.cc/ask/over18"
@@ -8,14 +8,15 @@ header = {"user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 # page = 39171
 try:
-    for p in range(39169, 39172):
+    for p in range(39319, 39322):
         pages = "/bbs/Gossiping/index{}.html".format(p)
         data = {
             "from" : pages,
             "yes" : "yes"}
-
         session = requests.Session()
         resp = session.post(url, headers = header, data = data)
+
+        time.sleep(2)
 
         if resp.status_code == 200:
             # print(resp.text)
@@ -23,8 +24,10 @@ try:
             datas = soup.select("div.r-ent")
             # print(datas)
             for data in datas:
-                print(data.select_one("a").text)
-                print("https://www.ptt.cc" + data.select_one("a").get("href"))
+                
+                if "Re: " not in data.select_one("a").text:
+                    print(data.select_one("a").text)
+                    print("https://www.ptt.cc" + data.select_one("a").get("href"))
             # datas = soup.select("div.yuRUbf")
             # for i in datas:
             #     print(i.select_one("h3").text)
@@ -32,3 +35,4 @@ try:
             #     print("*" * 60)
 except Exception as e:
     print(e, "哪尼~~~?")
+    print(data)
