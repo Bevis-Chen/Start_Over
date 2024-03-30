@@ -15,9 +15,7 @@ try:
             "yes" : "yes"}
         session = requests.Session()
         resp = session.post(url, headers = header, data = data)
-
         time.sleep(2)
-
         if resp.status_code == 200:
             # print(resp.text)
             soup = BeautifulSoup(resp.text, "html.parser")
@@ -28,6 +26,7 @@ try:
                     if "Re: " not in data.select_one("title a").text:
                         print(data.select_one("title a").text)
                         print("https://www.ptt.cc" + data.select_one("a").get("href"))
+                        
             # datas = soup.select("div.yuRUbf")
             # for i in datas:
             #     print(i.select_one("h3").text)
