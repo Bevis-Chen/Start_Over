@@ -1,4 +1,4 @@
-import requests, time
+import requests, time, re
 from bs4 import BeautifulSoup
 
 url = r"https://www.ptt.cc/ask/over18"
@@ -14,9 +14,16 @@ if resp.status_code == 200:
     # print(resp.text)
     soup = BeautifulSoup(resp.text, "html.parser")
     btn = soup.select("div.btn-group>a.btn")
-    for b in btn : 
-        print(b)
-
+    for i, b in enumerate(btn) : 
+        page_max = 0
+        if i == 3:
+            url_get = b.get("href")
+            re_page = r"\d"
+            page_max_str = re.findall(re_page, url_get)
+            page_max = eval("".join(page_max_str))
+            break
+    # print(url_get)
+    print()
 # try:
     # for p in range(39319, 39322):
     # pages = "/bbs/Gossiping/index{}.html".format(p)
