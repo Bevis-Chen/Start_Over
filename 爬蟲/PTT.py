@@ -27,14 +27,14 @@ try:
         # print(page_max)
     for p in range(1,10):
         pages = "/bbs/Gossiping/index{}.html".format(p)
-        data = {
+        data1 = {
             "from" : pages,
             "yes" : "yes"}
         session = requests.Session()
-        resp = session.post(url, headers = header, data = data)
-        time.sleep(2)
+        resp = session.post(url, headers = header, data = data1)
+        # time.sleep(2)
         if resp.status_code == 200:
-                print(resp.text)
+                # print(resp.text)
                 soup = BeautifulSoup(resp.text, "html.parser")
                 datas = soup.select("div.r-ent")
                 # print(datas)
@@ -42,7 +42,11 @@ try:
                     if a.select_one("title").text != None:
                         if "Re: " not in a.select_one("title a").text:
                             print(a.select_one("title a").text)
-                            print("https://www.ptt.cc" + a.select_one("a").get("href"))                        
+                            # print("https://www.ptt.cc" + a.select_one("a").get("href"))                        
+
+
+
+
 except Exception as e:
     print(e, "哪尼~~~?")
     print(data)
