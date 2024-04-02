@@ -39,9 +39,9 @@ try:
                 datas = soup.select("div.r-ent")
                 # print(datas)
                 for a in datas:
-                    if a.select_one("title").text != None:
-                        if "Re: " not in a.select_one("title a").text:
-                            print(a.select_one("title a").text)
+                    if a.select_one("div.title").text != None:
+                        if "Re: " not in a.select_one("div.title a").text:
+                            print(a.select_one("div.title a").text)
                             # print("https://www.ptt.cc" + a.select_one("a").get("href"))                        
 
 
