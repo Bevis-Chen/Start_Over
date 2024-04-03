@@ -25,7 +25,7 @@ try:
                 break
         # print(url_get)
         # print(page_max)
-    for p in range(1,10):
+    for p in range(1,3):
         pages = "/bbs/Gossiping/index{}.html".format(p)
         data1 = {
             "from" : pages,
@@ -41,6 +41,7 @@ try:
                 for a in datas:
                     if a.select_one("div.title").text != None:
                         if "Re: " not in a.select_one("div.title a").text:
+                            print(a.select_one("div.date").text, end = ", ")
                             print(a.select_one("div.title a").text, "https://www.ptt.cc" + a.select_one("a").get("href"))
                             # print()                        
 
