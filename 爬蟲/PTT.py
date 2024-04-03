@@ -41,8 +41,8 @@ try:
                 for a in datas:
                     if a.select_one("div.title").text != None:
                         if "Re: " not in a.select_one("div.title a").text:
-                            print(a.select_one("div.title a").text)
-                            # print("https://www.ptt.cc" + a.select_one("a").get("href"))                        
+                            print(a.select_one("div.title a").text, "https://www.ptt.cc" + a.select_one("a").get("href"))
+                            # print()                        
 
 
 
