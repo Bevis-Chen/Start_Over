@@ -37,7 +37,7 @@ try:
                 soup = BeautifulSoup(resp.text, "html.parser")
                 datas = soup.select("div.r-ent")                
                 for a in datas:
-                    if a.select_one("div.title").text != None:
+                    if (a.select_one("div.title").text != None) and (a.select_one("a").get("href") != None):
                         if "Re: " not in a.select_one("div.title a").text:
                             date = a.select_one("div.date").text
                             title = a.select_one("div.title a").text
@@ -51,7 +51,8 @@ try:
     df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
     print(e, "哪尼~~~?")
-    print(data)
+    print(data1)
+    print(a)
 
 '''
 datas = soup.select("div.yuRUbf")
