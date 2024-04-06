@@ -1,5 +1,6 @@
 import requests, time, re
 from bs4 import BeautifulSoup
+import pandas as pd
 
 url = r"https://www.ptt.cc/ask/over18"
 
@@ -23,9 +24,8 @@ try:
                 page_max_str = re.findall(re_page, url_get)
                 page_max = eval("".join(page_max_str))
                 break
-        # print(url_get)
-        # print(page_max)
-    for p in range(1,3):
+    datas_list = []        
+    for p in range(1, page_max):
         pages = "/bbs/Gossiping/index{}.html".format(p)
         data1 = {
             "from" : pages,
@@ -34,20 +34,21 @@ try:
         resp = session.post(url, headers = header, data = data1)
         # time.sleep(2)
         if resp.status_code == 200:
-                # print(resp.text)
                 soup = BeautifulSoup(resp.text, "html.parser")
-                datas = soup.select("div.r-ent")
-                # print(datas)
+                datas = soup.select("div.r-ent")                
                 for a in datas:
                     if a.select_one("div.title").text != None:
                         if "Re: " not in a.select_one("div.title a").text:
-                            print(a.select_one("div.date").text, end = ", ")
-                            print(a.select_one("div.title a").text, "https://www.ptt.cc" + a.select_one("a").get("href"))
+                            date = a.select_one("div.date").text
+                            title = a.select_one("div.title a").text
+                            ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
+                            datas_list.append([date, title, ptt_url])
+                            # print(date, end = ", ")
+                            # print(title)
+                            # print(ptt_url)
                             # print()                        
-
-
-
-
+    df = pd.DataFrame(datas_list, columns = ["Date", "Title", "URL"])
+    df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
     print(e, "哪尼~~~?")
     print(data)
