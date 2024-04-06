@@ -37,16 +37,17 @@ try:
                 soup = BeautifulSoup(resp.text, "html.parser")
                 datas = soup.select("div.r-ent")                
                 for a in datas:
-                    if (a.select_one("div.title").text != None) and (a.select_one("a").get("href") != None):
+                    if a.select_one("div.title").text != None:
                         if "Re: " not in a.select_one("div.title a").text:
-                            date = a.select_one("div.date").text
-                            title = a.select_one("div.title a").text
-                            ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
-                            datas_list.append([date, title, ptt_url])
-                            # print(date, end = ", ")
-                            # print(title)
-                            # print(ptt_url)
-                            # print()                        
+                            if a.select_one("a").get("href") != None:
+                                date = a.select_one("div.date").text
+                                title = a.select_one("div.title a").text
+                                ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
+                                datas_list.append([date, title, ptt_url])
+                                # print(date, end = ", ")
+                                # print(title)
+                                # print(ptt_url)
+                                # print()                        
     df = pd.DataFrame(datas_list, columns = ["Date", "Title", "URL"])
     df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
