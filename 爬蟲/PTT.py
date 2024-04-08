@@ -25,7 +25,7 @@ try:
                 page_max = eval("".join(page_max_str))
                 break
     datas_list = []        
-    for p in range(1, 20):
+    for p in range(1, 900):
         pages = "/bbs/Gossiping/index{}.html".format(p)
         data1 = {
             "from" : pages,
