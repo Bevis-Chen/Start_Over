@@ -37,7 +37,8 @@ try:
                 soup = BeautifulSoup(resp.text, "html.parser")
                 datas = soup.select("div.r-ent")                
                 for a in datas:
-                    if a.select_one("div.title").text != None:
+                    title_try = a.select_one("div.title").text
+                    if title_try != None:
                         if "Re: " not in a.select_one("div.title a").text:
                             if a.select_one("a").get("href") != None:
                                 date = a.select_one("div.date").text
