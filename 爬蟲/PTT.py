@@ -38,17 +38,16 @@ try:
                 datas = soup.select("div.r-ent")                
                 for a in datas:
                     title_try = a.select_one("div.title").text
-                    if title_try != None:
-                        if "Re: " not in a.select_one("div.title a").text:
-                            if a.select_one("a").get("href") != None:
-                                date = a.select_one("div.date").text
-                                title = a.select_one("div.title a").text
-                                ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
-                                datas_list.append([date, title, ptt_url])
-                                # print(date, end = ", ")
-                                # print(title)
-                                # print(ptt_url)
-                                # print()                        
+                    url_try = a.select_one("a").get("href")
+                    if (title_try != None) and ("Re: " not in title_try) and (url_try != None):                                            
+                        date = a.select_one("div.date").text
+                        title = a.select_one("div.title a").text
+                        ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
+                        datas_list.append([date, title, ptt_url])
+                        # print(date, end = ", ")
+                        # print(title)
+                        # print(ptt_url)
+                        # print()                        
     df = pd.DataFrame(datas_list, columns = ["Date", "Title", "URL"])
     df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
