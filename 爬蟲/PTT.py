@@ -39,7 +39,9 @@ try:
                 for a in datas:
                     title_try = a.select_one("div.title").text
                     url_try = a.select_one("a").get("href")
-                    if (title_try != None) and ("Re: " not in title_try) and (url_try != None):                                            
+
+                    # (title_try != None) and 
+                    if (url_try != None) and ("Re: " not in title_try):                                            
                         date = a.select_one("div.date").text
                         title = a.select_one("div.title a").text
                         ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
