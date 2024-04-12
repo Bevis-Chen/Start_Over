@@ -21,41 +21,46 @@ try:
             if i == 3:
                 url_get = b.get("href")
                 re_page = r"\d"
-                page_max_str = re.findall(re_page, url_get)
-                page_max = eval("".join(page_max_str))
+                page_str = re.findall(re_page, url_get)
+                page = eval("".join(page_str))
                 break
     datas_list = []        
-    for p in range(1, 900):
-        pages = "/bbs/Gossiping/index{}.html".format(p)
-        data1 = {
-            "from" : pages,
-            "yes" : "yes"}
+    # for p in range(page_max, ):
+    while True:        
+        pages = "/bbs/Gossiping/index{}.html".format(page)
         session = requests.Session()
-        resp = session.post(url, headers = header, data = data1)
+        resp = session.post(url, headers = header)
         # time.sleep(2)
         if resp.status_code == 200:
                 temp = resp.text.split('<div class="r-list-sep"></div>')[0]
                 soup = BeautifulSoup(resp.text, "html.parser")
+                btn = soup.select("div.btn-group>a.btn")
+                for i, b in enumerate(btn) : 
+                    page_max = 0
+                    if i == 3:
+                        url_get = b.get("href")
+                        re_page = r"\d"
+                        page_str = re.findall(re_page, url_get)
+                        page = eval("".join(page_str))
+                        break
+
                 datas = soup.select("div.r-ent")                
                 for a in datas:
                     title_try = a.select_one("div.title").text
                     url_try = a.select_one("a").get("href")
-
                     # (title_try != None) and 
                     if (url_try != None) and ("Re: " not in title_try):                                            
                         date = a.select_one("div.date").text
                         title = a.select_one("div.title a").text
                         ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
-                        datas_list.append([date, title, ptt_url])
-                        # print(date, end = ", ")
-                        # print(title)
-                        # print(ptt_url)
-                        # print()                        
+                        print(date, title, ptt_url)
+                        # datas_list.append([date, title, ptt_url])
+
     df = pd.DataFrame(datas_list, columns = ["Date", "Title", "URL"])
     df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
     print(e, "哪尼~~~?")
-    print(data1)
+    print()
     print(a)
 
 '''
