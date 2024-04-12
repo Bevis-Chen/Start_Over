@@ -34,6 +34,7 @@ try:
         resp = session.post(url, headers = header, data = data1)
         # time.sleep(2)
         if resp.status_code == 200:
+                temp = resp.text.split('<div class="r-list-sep"></div>')[0]
                 soup = BeautifulSoup(resp.text, "html.parser")
                 datas = soup.select("div.r-ent")                
                 for a in datas:
