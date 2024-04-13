@@ -51,6 +51,8 @@ try:
                     # (title_try != None) and 
                     if (url_try != None) and ("Re: " not in title_try):                                            
                         date = a.select_one("div.date").text
+                        if date == "10/14":
+                            break
                         title = a.select_one("div.title a").text
                         ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
                         print(date, title, ptt_url)
