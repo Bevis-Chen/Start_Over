@@ -63,7 +63,7 @@ try:
 except Exception as e:
     print(e, "哪尼~~~?")
     print()
-    print(a)
+    # print(a)
 
 '''
 datas = soup.select("div.yuRUbf")
