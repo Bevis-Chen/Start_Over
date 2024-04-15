@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 from bs4 import BeautifulSoup
 # import pandas as pd
 
@@ -14,15 +15,16 @@ session.post(url, headers = header, data = data)
 url2 = "https://www.ptt.cc/bbs/Gossiping/index.html"
 
 while True:
-    r = session.post(url, data = data, headers = header)
+    r = session.post(url2, data = data, headers = header)
     temp = r.text.split('<div class="r-list-sep"></div>')[0]
     soup = BeautifulSoup(temp, "html.parser")
     titles = soup.select("div.r-ent div.title a")
     dates = soup.select("div.r-ent div.meta div.date")
-    ptt_urls = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
+    url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
     for i, n in zip(titles, dates):
-        if "Re:" not in n:
-            print(i.text)
-            print(n.text)
-            print("https://www.ptt.cc" + i.get("href"))
+        if "Re: " not in i.text:
+            if n.text != "04/14":
+                print(i.text)
+                print(n.text)
+                print("https://www.ptt.cc" + i.get("href"))
