@@ -17,10 +17,12 @@ while True:
     r = session.post(url, data = data, headers = header)
     temp = r.text.split('<div class="r-list-sep"></div>')[0]
     soup = BeautifulSoup(temp, "html.parser")
-    title = soup.select("div.r-ent div.title a")
-    date = soup.select("div.r-ent div.title div.meta div.date")
-    ptt_url = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
+    titles = soup.select("div.r-ent div.title a")
+    dates = soup.select("div.r-ent div.meta div.date")
+    ptt_urls = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
-    for i, n in enumerate(title):
+    for i, n in zip(titles, dates):
         if "Re:" not in n:
+            print(i.text)
             print(n.text)
+            print("https://www.ptt.cc" + i.get("href"))
