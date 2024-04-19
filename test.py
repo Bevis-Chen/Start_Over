@@ -1,3 +1,5 @@
-import requests
-from bs4 import BeautifulSoup
+from datetime import datetime
 
+current_datetime = datetime.now()
+
+print(str(current_datetime.month) + "/" + str(current_datetime.day))

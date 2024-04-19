@@ -3,6 +3,9 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 # import pandas as pd
 
+current_datetime = datetime.now()
+Date = str(current_datetime.month) + "/" + str(current_datetime.day)
+
 url = r"https://www.ptt.cc/ask/over18"
 
 header = {"user-agent" : 
@@ -23,8 +26,9 @@ while True:
     url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
     for i, n in zip(titles, dates):
+        if n.text != Date:
+            
         if "Re: " not in i.text:
-            if n.text != "04/14":
-                print(i.text)
-                print(n.text)
-                print("https://www.ptt.cc" + i.get("href"))
+            print(i.text)
+            print(n.text)
+            print("https://www.ptt.cc" + i.get("href"))

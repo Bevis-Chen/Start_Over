@@ -24,26 +24,26 @@ try:
                 page = eval("".join(page_str))
                 break
     print("https://www.ptt.cc" + url_get)
-    datas_list = []        
-    for p in range(page_max, ):
-    pages = "/bbs/Gossiping/index{}.html".format(page)
-    session = requests.Session()
-    resp = session.post(url, headers = header)    
-    while True:                        
-        datas = soup.select("div.r-ent")                
-        for a in datas:
-            title_try = a.select_one("div.title").text
-            url_try = a.select_one("a").get("href")
-            # (title_try != None) and 
-            if (url_try != None) and ("Re: " not in title_try):                                            
-                date = a.select_one("div.date").text
-                if date == "10/14":
-                    break
-                title = a.select_one("div.title a").text
-                ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
-                print(date, title, ptt_url)
-                datas_list.append([date, title, ptt_url])
-                return
+    # datas_list = []        
+    # for p in range(page_max, ):
+    # pages = "/bbs/Gossiping/index{}.html".format(page)
+    # session = requests.Session()
+    # resp = session.post(url, headers = header)    
+    # while True:                        
+        # datas = soup.select("div.r-ent")                
+        # for a in datas:
+        #     title_try = a.select_one("div.title").text
+        #     url_try = a.select_one("a").get("href")
+        #     # (title_try != None) and 
+        #     if (url_try != None) and ("Re: " not in title_try):                                            
+        #         date = a.select_one("div.date").text
+        #         if date == "10/14":
+        #             break
+        #         title = a.select_one("div.title a").text
+        #         ptt_url = "https://www.ptt.cc" + a.select_one("a").get("href")
+        #         print(date, title, ptt_url)
+                # datas_list.append([date, title, ptt_url])
+                # return
     # df = pd.DataFrame(datas_list, columns = ["Date", "Title", "URL"])
     # df.to_csv(r"爬蟲\PTT_Gossiping_Info.csv", encoding = "utf-8-sig")
 except Exception as e:
