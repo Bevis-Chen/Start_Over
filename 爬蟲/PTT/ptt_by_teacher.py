@@ -1,8 +1,7 @@
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-# import pandas as pd
-
+# 
 def pttNews():
     current_datetime = datetime.now()
     Date = str(current_datetime.month) + "/" + str(current_datetime.day)
@@ -17,7 +16,8 @@ def pttNews():
     session = requests.Session()
     session.post(url, headers = header, data = data)
     url2 = "https://www.ptt.cc/bbs/Gossiping/index.html"
-
+    # print(Date)
+    # print(type(Date))
     while True:
         r = session.post(url2, data = data, headers = header)
         temp = r.text.split('<div class="r-list-sep"></div>')[0]
@@ -26,12 +26,13 @@ def pttNews():
         dates = soup.select("div.r-ent div.meta div.date")
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
-        for i, n in zip(titles, dates):
-            if n.text != Date:
-                return 
-            if "Re: " not in i.text:
-                print(i.text)
-                print(n.text)
-                print("https://www.ptt.cc" + i.get("href"))
+        for title, time in zip(titles, dates):
 
+            if "Re:" not in title.text:
+                print(title.text)
+                print("https://www.ptt.cc" + title.get("href"))
+                print(time.text)
+                
+            if time.text != Date:
+                return 
 pttNews()
