@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
-# 
+
 def pttNews():
     current_datetime = datetime.now()
     Date = str(current_datetime.month) + "/" + str(current_datetime.day)
@@ -27,12 +27,12 @@ def pttNews():
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
         for title, time in zip(titles, dates):
-
+            if time.text != Date:
+                return 
             if "Re:" not in title.text:
                 print(title.text)
                 print("https://www.ptt.cc" + title.get("href"))
                 print(time.text)
                 
-            if time.text != Date:
-                return 
+
 pttNews()
