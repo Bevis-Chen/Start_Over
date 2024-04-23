@@ -27,9 +27,13 @@ def pttNews():
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
         for title, time in zip(titles, dates):
+            if time.text == "4/23":
+                return             
             if "Re:" not in title.text:
                 print(title.text)
                 print("https://www.ptt.cc" + title.get("href"))
                 print(time.text)
+
+
                 
 pttNews()
