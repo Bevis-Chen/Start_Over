@@ -22,18 +22,15 @@ def pttNews():
         soup = BeautifulSoup(temp, "html.parser")
         titles = soup.select("div.r-ent div.title a")
         dates = soup.select("div.r-ent div.meta div.date")
-        # if dates[0].text != Date:
-        #     return         
+
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
         for title, time in zip(titles, dates):
-            if time.text == "4/23":
+            if time.text == " 4/25":
                 return             
             if "Re:" not in title.text:
                 print(title.text)
                 print("https://www.ptt.cc" + title.get("href"))
                 print(time.text)
-
-
-                
+              
 pttNews()
