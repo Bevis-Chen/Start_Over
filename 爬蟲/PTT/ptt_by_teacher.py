@@ -2,9 +2,9 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-def pttNews():
+def pttNews(key):
     current_datetime = datetime.now()
-    Date = str(current_datetime.month) + "/" + str(current_datetime.day)
+    Date = " " + str(current_datetime.month) + "/" + str(current_datetime.day - 1)
 
     url = r"https://www.ptt.cc/ask/over18"
     header = {"user-agent" : 
@@ -26,11 +26,11 @@ def pttNews():
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
 
         for title, time in zip(titles, dates):
-            if time.text == " 4/26":
+            if time.text == Date:
                 return             
-            if "Re:" not in title.text:
+            if ("Re:" not in title.text) and (key in title.text):
                 print(title.text)
                 print("https://www.ptt.cc" + title.get("href"))
-                print(time.text)
+                print(time.text.split()[0])
               
-pttNews()
+pttNews("問卦")
