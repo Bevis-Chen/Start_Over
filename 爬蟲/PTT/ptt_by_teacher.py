@@ -47,5 +47,6 @@ def pttNews(key = None):
                     print(title_date, title_name)                    
                     print(content)
                     print("-" * 60)
+                    return 
               
 pttNews()
