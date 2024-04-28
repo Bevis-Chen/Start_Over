@@ -2,15 +2,15 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 
-def pttNews(key):
-    current_datetime = datetime.now()
-    Date = " " + str(current_datetime.month) + "/" + str(current_datetime.day - 1)
-
-    url = r"https://www.ptt.cc/ask/over18"
+def pttNews():
     header = {"user-agent" : 
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"}
     data = { "from" : "/bbs/Gossiping/index.html",
             "yes" : "yes" }
+
+    current_datetime = datetime.now()
+    Date = str(current_datetime.month) + "/" + str(current_datetime.day - 1)
+    url = r"https://www.ptt.cc/ask/over18"
     
     session = requests.Session()
     session.post(url, headers = header, data = data)
@@ -28,9 +28,10 @@ def pttNews(key):
         for title, time in zip(titles, dates):
             if time.text == Date:
                 return             
-            if ("Re:" not in title.text) and (key in title.text):
+            #  and (key in title.text)
+            if "Re:" not in title.text:
                 print(title.text)
                 print("https://www.ptt.cc" + title.get("href"))
                 print(time.text.split()[0])
               
-pttNews("問卦")
+pttNews()
