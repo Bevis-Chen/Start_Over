@@ -13,7 +13,7 @@ def pttNews(key = None):
     url = r"https://www.ptt.cc/ask/over18"    
     session = requests.Session()
     session.post(url, headers = header, data = data)
-    url2 = "https://www.ptt.cc/bbs/Gossiping/index.html"
+    url2 = "https://www.ptt.cc/bbs/Beauty/index.html"
     list1 = []
     while True:
         r = session.post(url2, data = data, headers = header)
@@ -59,7 +59,8 @@ def pttNews(key = None):
                     # return 
         return list1
 
-list_data = pttNews("問卦")
+list_data = pttNews("正妹")
 df = pd.DataFrame(list_data, columns = ["Date", "Name", "Content"])
+print(df)
 # print(list_data)
-df.to_csv(r"爬蟲\PTT\PTT.csv", encoding = "utf-8-sig")
+# df.to_csv(r"爬蟲\PTT\PTT.csv", encoding = "utf-8-sig")
