@@ -1,3 +1,4 @@
+import re
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
@@ -40,7 +41,12 @@ def pttNews(key = None):
                     soup = BeautifulSoup(r1.text, "html.parser")
                     imgs = soup.select("img")
                     for img in imgs:
-                        print(img.get("src"))
+                        img_src = img.get("src")
+                        program = r".com/(\w+.jpg)?"
+                        file_name = re.findall(program, img_src)[0]
+                        print(img_src)
+                        print("*" * 60)
+                        print(file_name)
 
                     # text1 = soup.find("div", id = "main-content").text
                     # text2 = text1.split("※ 發信站: 批踢踢實業坊(ptt.cc),")[0].split("\n")[1:]
@@ -50,7 +56,7 @@ def pttNews(key = None):
                     # print("-" * 60)
                     # temp_list.append([title_date, title_name, content])
                     # list1.extend(temp_list)
-                    return
+                    # return
                     
             else:
                 if "Re:" not in title.text :
