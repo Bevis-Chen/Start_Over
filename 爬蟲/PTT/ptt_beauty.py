@@ -10,7 +10,7 @@ def pttNews(key = None):
             "yes" : "yes" }
     
     current_datetime = datetime.now()
-    delta = timedelta(days = -5)
+    delta = timedelta(days = -1)
     need_date = current_datetime + delta
     Date = str(need_date.month) + "/" + str(need_date.day)
 
@@ -29,8 +29,8 @@ def pttNews(key = None):
         url2 = "https://www.ptt.cc" + soup.select("div.btn-group.btn-group-paging a")[1].get("href")
         for title, time in zip(titles, dates):
             temp_list = []
-            if time.text.split()[0] == Date:
-                return             
+            # if time.text.split()[0] == Date:
+            #     return             
             if key != None:
                 if "Re:" not in title.text and (key in title.text):
                     title_name = title.text
@@ -38,14 +38,20 @@ def pttNews(key = None):
                     title_date = time.text.split()[0]
                     r1 = session.post(title_url, data = data, headers = header)
                     soup = BeautifulSoup(r1.text, "html.parser")
-                    text1 = soup.find("div", id = "main-content").text
-                    text2 = text1.split("※ 發信站: 批踢踢實業坊(ptt.cc),")[0].split("\n")[1:]
-                    content = "\n".join(text2)                    
+                    imgs = soup.select("img")
+                    for img in imgs:
+                        print(img.get("src"))
+
+                    # text1 = soup.find("div", id = "main-content").text
+                    # text2 = text1.split("※ 發信站: 批踢踢實業坊(ptt.cc),")[0].split("\n")[1:]
+                    # content = "\n".join(text2)                    
                     # print(title_date, title_name)                    
                     # print(content)
                     # print("-" * 60)
-                    temp_list.append([title_date, title_name, content])
-                    list1.extend(temp_list)
+                    # temp_list.append([title_date, title_name, content])
+                    # list1.extend(temp_list)
+                    return
+                    
             else:
                 if "Re:" not in title.text :
                     title_name = title.text
@@ -61,10 +67,10 @@ def pttNews(key = None):
                     # print(title_date, title_name)                    
                     # print(content)
                     # print("-" * 60)
-        return list1
-# pttNews("正妹")
-list_data = pttNews("正妹")
-df = pd.DataFrame(list_data, columns = ["Date", "Name", "Content"])
-print(df)
+            # return list1
+pttNews("正妹")
+# list_data = pttNews("正妹")
+# df = pd.DataFrame(list_data, columns = ["Date", "Name", "Content"])
+# print(df)
 # print(list_data)
 # df.to_csv(r"爬蟲\PTT\PTT.csv", encoding = "utf-8-sig")
