@@ -42,12 +42,16 @@ def pttNews(key = None):
                     imgs = soup.select("img")
                     for img in imgs:
                         img_src = img.get("src")
-                        program = r".com/(\w+.jpg)?"
+                        program = r".com/(\w*.\w*)?"
                         file_name = re.findall(program, img_src)[0]
-                        print(img_src)
-                        print("*" * 60)
-                        print(file_name)
-
+                        # print(img_src)
+                        # print(file_name)
+                        # print("*" * 60)
+                        r2 = session.get(img_src, headers = header)
+                        with open(file_name, "w") as pic:
+                            for i in r2:
+                                pic.write(i)    
+                        return                
                     # text1 = soup.find("div", id = "main-content").text
                     # text2 = text1.split("※ 發信站: 批踢踢實業坊(ptt.cc),")[0].split("\n")[1:]
                     # content = "\n".join(text2)                    
@@ -56,8 +60,7 @@ def pttNews(key = None):
                     # print("-" * 60)
                     # temp_list.append([title_date, title_name, content])
                     # list1.extend(temp_list)
-                    # return
-                    
+                    return                    
             else:
                 if "Re:" not in title.text :
                     title_name = title.text
