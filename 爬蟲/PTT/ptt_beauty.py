@@ -80,7 +80,7 @@ def pttNews(key = None):
                     # print(content)
                     # print("-" * 60)
             # return list1
-pttNews("正妹")
+pttNews("波多野")
 # list_data = pttNews("正妹")
 # df = pd.DataFrame(list_data, columns = ["Date", "Name", "Content"])
 # print(df)
