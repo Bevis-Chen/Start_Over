@@ -43,13 +43,15 @@ def pttNews(key = None):
                     for img in imgs:
                         img_src = img.get("src")
                         program = r".com/(\w*.\w*)?"
-                        file_name = re.findall(program, img_src)[0]
+                        program1 = r".tw/(\w*.\w*)"
+                        try:
+                            file_name = re.findall(program, img_src)[0]
+                        except Exception as e:
+                            file_name = re.findall(program1, img_src)[0]                        
                         # print(img_src)
                         # print(file_name)
                         # print("*" * 60)
                         r2 = session.get(img_src, headers = header)
-                        # for i in r2:
-                        #     print(i)
                         beautys_folder_name = r"爬蟲/PTT/beauty_imgs/"
                         with open(beautys_folder_name + file_name, "wb") as pic:
                             for i in r2:
@@ -80,7 +82,7 @@ def pttNews(key = None):
                     # print(content)
                     # print("-" * 60)
             # return list1
-pttNews("波多野")
+pttNews("有菜")
 # list_data = pttNews("正妹")
 # df = pd.DataFrame(list_data, columns = ["Date", "Name", "Content"])
 # print(df)
