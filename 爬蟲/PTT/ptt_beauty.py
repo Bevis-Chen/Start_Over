@@ -48,10 +48,13 @@ def pttNews(key = None):
                         # print(file_name)
                         # print("*" * 60)
                         r2 = session.get(img_src, headers = header)
-                        with open(file_name, "w") as pic:
+                        # for i in r2:
+                        #     print(i)
+                        beautys_folder_name = r"爬蟲/PTT/beauty_imgs/"
+                        with open(beautys_folder_name + file_name, "wb") as pic:
                             for i in r2:
                                 pic.write(i)    
-                        return                
+                        # return                
                     # text1 = soup.find("div", id = "main-content").text
                     # text2 = text1.split("※ 發信站: 批踢踢實業坊(ptt.cc),")[0].split("\n")[1:]
                     # content = "\n".join(text2)                    
