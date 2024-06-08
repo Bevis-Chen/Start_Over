@@ -16,4 +16,5 @@ if resp.status_code == 200:
         print(key, "搜尋失敗")
         print(key, "出現 0 次")
 else:
-    print("網頁下載失敗")
+    print("網頁下載失敗") 
+    print()
